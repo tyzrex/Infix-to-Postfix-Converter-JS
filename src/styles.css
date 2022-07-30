@@ -1,0 +1,33 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+table,th,tr,td{
+    border:1px solid rgba(237, 221, 221, 0.307);
+    border-collapse: collapse;
+}
+
+td{
+    padding: 12px 20px;
+}
+
+.table-post{
+    margin-top: 20px;
+}
+
+.display{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 20px;
+}
+
+@media screen and (max-width:420px) {
+    th{
+        font-size: small;
+    }
+    td{
+        font-size: small;
+        padding: 6px 8px;
+    }
+}
