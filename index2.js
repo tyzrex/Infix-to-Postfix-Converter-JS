@@ -1,7 +1,9 @@
 let res = document.getElementById("results");
 let tabs = document.getElementById("table");
 const convert = document.getElementById("submit")
+const convert2 = document.getElementById("submit-2");
 let expression = 0;
+let change = document.getElementById("change-name");
 const display = document.getElementById("display");
 const reset=document.getElementById("reset-form");
 let post = document.getElementById("postfix-exp");
@@ -36,8 +38,25 @@ convert.onclick = () => {
     for (var i = 0; i < items.exp.length; i++) {
         tabitems += "<tr><td>" + i + "</td><td>" + items['exp'][i] + "</td><td>" + items['stak'][i] + "</td><td>" + items['conexp'][i] + "</td></tr>";
     }
+    change.innerHTML = "The postfix expression is:"
     sel("tabledata").innerHTML = tabitems;
     disp=infixToPostfix(document.getElementById("init-expression").value, 1)['postfixExpression'];
+    display.innerHTML = disp;
+}
+
+convert2.onclick = () =>{
+    tabs.style.display = "inline-block";
+    post.style.display = "block";
+    // getExpression();
+    let disp,items, tabitems = "";
+    items = infixToPrefix(document.getElementById("init-expression").value, 1)['table'];
+    sel("itemname").innerHTML = "Postfix";
+    for (var i = 0; i < items.exp.length; i++) {
+        tabitems += "<tr><td>" + i + "</td><td>" + items['exp'][i] + "</td><td>" + items['stak'][i] + "</td><td>" + items['conexp'][i] + "</td></tr>";
+    }
+    sel("tabledata").innerHTML = tabitems;
+    change.innerHTML = "The prefix expression is:"
+    disp=infixToPrefix(document.getElementById("init-expression").value, 1)['prefixExpression'];
     display.innerHTML = disp;
 }
 
@@ -139,5 +158,27 @@ burger.onclick = () => {
     }
     else{
         menu.classList.add("hidden");
+    }
+}
+
+const reverseExpression = (expression) => {
+    let temp = expression.split("");
+    for(let i=0 ; i<expression.length ; i++) {
+    if(temp[i]===")"){
+        temp[i] = "("
+    }
+    else if(temp[i]==="("){
+        temp[i] = ")";
+    }
+}
+return temp.reverse().join("");
+}
+
+
+const infixToPrefix = (expression,tab=0) =>{
+    let prefixExp = infixToPostfix(reverseExpression(expression),tab);
+    return{
+        prefixExpression : reverseExpression(prefixExp['postfixExpression']),
+        table: prefixExp['table']
     }
 }

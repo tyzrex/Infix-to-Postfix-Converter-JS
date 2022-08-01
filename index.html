@@ -16,7 +16,7 @@
     <div>
       <nav class="md:flex md:justify-between md:items-center p-4 md:p-1 bg-gray-900 text-white">
         <div class="flex justify-between items-center ml-4">
-          <h1 class="">Infix To Post Fix Converter</h1>
+          <h1 class="">Infix Converter</h1>
           <div class="px-4 cursor-pointer md:hidden " id="burger">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
@@ -43,7 +43,7 @@
           <div class="flex flex-col w-full justify-center items-center font-mono text-center md:text-left relative">
             <div class="mb-3 text-lg text-center font-bold font-mono relative z-10">
               <h1 class="my-4 text-2xl sm:text-5xl font-bold leading-tight">
-                Infix to Postfix Converter
+                Infix to Postfix/Prefix Converter
               </h1>
               <h3 class="text-sm md:text-base">
                 The expressions of the form a op b are known as infix expressions. In other words these are the
@@ -62,19 +62,21 @@
       </div>
       <div class=" bg-gray-900 text-white main flex align-middle justify-center text-center">
         <div class="mt-4">
-          <h1 class="text-4xl font-semibold">Infix to Postfix Converter</h1>
+          <h1 class="text-4xl font-semibold">Infix to Postfix/Prefix Converter</h1>
           <h4 class="text-2xl mt-3">Enter Infix Expression:</h4>
           <input type="text" class="exp-form text-center border p-3 mt-4 bg-gray-700"
             id="init-expression"></input><br><br>
           <button class="submit bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full"
-            id="submit">Convert</button>
+            id="submit">Convert Postfix</button>
+            <button class="submit bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full"
+            id="submit-2">Convert Prefix</button>
           <span id="results"></span>
           <div id="postfix-exp" class="mt-8" style="display:none">
             <input type="button"
               class="mt-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
               value="Clear Results" id="reset-form">
             <div>
-              <h2 class="mt-4 font-semibold">The postfix expression is</h2>
+              <h2 class="mt-4 font-semibold" id="change-name"></h2>
             </div>
             <div class="display" id="display"></div>
           </div>
@@ -104,7 +106,7 @@
     <div class=" pb-8 bg-green-800 pattern-grid-sm text-green-900">
       <div class="text-indigo-100 px-6 mx-auto max-w-4xl">
         <div class="flex flex-col w-full justify-center items-center font-mono text-center md:text-left relative">
-          <h1 class="pt-16 text-4xl font-bold mb-2">Algorithm:</h1>
+          <h1 class="pt-8 text-4xl font-bold mb-2">Algorithm for Postfix Conversion:</h1>
           <p class="text-sm text-gray-400">
             For the conversion of the infix expression to the postfix expression we use a algorithm stated below:
           <ul class="list-disc text-left text-xs sm:text-sm">
@@ -144,6 +146,15 @@
             </li>
           </ul>
           </p>
+          <h1 class="pt-8 text-4xl font-bold mb-2">Algorithm for Prefix Conversion:</h1>
+          <ul class="list-disc text-left text-xs sm:text-sm">
+            <p class="text-sm text-gray-400">
+              For the conversion of the infix expression to the prefix expression we use a algorithm stated below:
+            <li>Scan the infix expression from left to right. </li>
+            <li>Reverse the expression changing the brackets directions.</li>
+            <li>Using postfix evaluation to the reversed expression</li>
+            <li>Again reverse the result from this evaluation to get the prefix expression.</li>
+          </ul>
         </div>
       </div>
     </div>
