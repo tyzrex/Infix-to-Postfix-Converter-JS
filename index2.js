@@ -93,10 +93,10 @@ const isAParen = (s) => userOperators[s] === 3;
 // Infix to postfix conversion
 function infixToPostfix(expression, tab = 0) {
 
-    const infixExp = [...expression.split(""), ""];
+    const infixExp = [...expression.split(""), ")"];
     const postfixExp = [];
 
-    const opStack = [""];
+    const opStack = ["("];
 
     let table = {
         exp: [],
@@ -104,9 +104,9 @@ function infixToPostfix(expression, tab = 0) {
         conexp: [],
     };
 
-    // table.exp.push("");
-    // table.stak.push(opStack.join(" "));
-    // table.conexp.push(postfixExp.join(""));
+    table.exp.push("");
+    table.stak.push(opStack.join(" "));
+    table.conexp.push(postfixExp.join(""));
 
     for (var char of infixExp) {
 
