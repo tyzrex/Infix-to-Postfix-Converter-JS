@@ -93,7 +93,7 @@ const isAParen = (s) => userOperators[s] === 3;
 // Infix to postfix conversion
 function infixToPostfix(expression, tab = 0) {
 
-    const infixExp = [...expression.split(""), ")"];
+    const infixExp = [...expression.split(""), ""];
     const postfixExp = [];
 
     const opStack = [""];
@@ -142,7 +142,7 @@ function infixToPostfix(expression, tab = 0) {
     while (opStack.length > 0) {
         postfixExp.push(opStack.pop());
     }
-
+    console.log(table);
     return {
         postfixExpression: postfixExp.join(""),
         table: table
